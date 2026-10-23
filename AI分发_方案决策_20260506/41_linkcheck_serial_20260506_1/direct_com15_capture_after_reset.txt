@@ -1,0 +1,16 @@
+﻿sig,s=0,sc=1,lk=0,cp=0,lo=29000000,est=29000000,k=1/74,v=0,p=0,n=4294967295
+mod,m=UNKNOWN,ac=0,env=0,edge=0,lvl=0,fq=0,psk=0,hist=0,+=0,-=0,blk=0
+mod,mode=FM,blk=64,car=1,ac=47257030,env=100,edge=113,lvl=8,freq=286,psk=16,hist=1,pos=93,neg=6,bias=12369346
+mod,mode=FM,blk=128,car=1,ac=47165177,env=102,edge=141,lvl=8,freq=286,psk=14,hist=1,pos=92,neg=7,bias=12024459
+mod,mode=FM,blk=192,car=1,ac=47063028,env=121,edge=137,lvl=8,freq=287,psk=18,hist=1,pos=91,neg=8,bias=11615210
+mod,mode=FM,blk=256,car=1,ac=47006561,env=108,edge=123,lvl=8,freq=286,psk=16,hist=1,pos=94,neg=5,bias=12461204
+mod,mode=FM,blk=320,car=1,ac=47213191,env=120,edge=170,lvl=8,freq=285,psk=15,hist=1,pos=91,neg=8,bias=11975682
+mod,mode=FM,blk=384,car=1,ac=47277893,env=95,edge=117,lvl=8,freq=287,psk=15,hist=1,pos=94,neg=5,bias=12599790
+mod,mode=FM,blk=448,car=1,ac=47125838,env=101,edge=135,lvl=8,freq=287,psk=14,hist=1,pos=93,neg=6,bias=12300559
+mod,mode=FM,blk=512,car=1,ac=47131536,env=135,edge=192,lvl=8,freq=278,psk=18,hist=1,pos=90,neg=9,bias=11415720
+mod,mode=FM,blk=576,car=1,ac=47101561,env=83,edge=102,lvl=8,freq=289,psk=13,hist=1,pos=94,neg=5,bias=12607415
+mod,mode=FM,blk=640,car=1,ac=47085999,env=48,edge=52,lvl=8,freq=293,psk=7,hist=1,pos=97,neg=2,bias=13547777
+mod,mode=FM,blk=704,car=1,ac=47103009,env=105,edge=149,lvl=8,freq=287,psk=15,hist=1,pos=93,neg=6,bias=12400537
+mod,mode=FM,blk=768,car=1,ac=47339635,env=88,edge=100,lvl=8,freq=283,psk=15,hist=1,pos=95,neg=4,bias=12797830
+mod,mode=FM,blk=832,car=1,ac=47109738,env=132,edge=158,lvl=8,freq=285,psk=20,hist=1,pos=91,neg=8,bias=11587134
+

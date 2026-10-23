@@ -1,0 +1,593 @@
+﻿{
+    "ai_active":  true,
+    "manual_active":  false,
+    "effective_mode":  "ai_only",
+    "control_mode":  "ai_only",
+    "instrument_status":  {
+                              "idn":  "Rigol Technologies,DG4062,DG4E185150794,00.01.13",
+                              "system_error":  "0,\"No error\"",
+                              "channels":  [
+                                               {
+                                                   "channel":  1,
+                                                   "output_enabled":  true,
+                                                   "function":  "SIN",
+                                                   "frequency_hz":  40000000.0,
+                                                   "amplitude_vpp":  1.5,
+                                                   "offset_v":  0.0,
+                                                   "phase_deg":  0.0,
+                                                   "impedance":  "INFINITY",
+                                                   "modulation":  {
+                                                                      "channel":  1,
+                                                                      "enabled":  true,
+                                                                      "type":  "FM",
+                                                                      "source":  "INT",
+                                                                      "internal_function":  "SIN",
+                                                                      "rate_hz":  10000.0,
+                                                                      "depth_percent":  null,
+                                                                      "deviation":  20000.0,
+                                                                      "amplitude_vpp":  null,
+                                                                      "hop_frequency_hz":  null,
+                                                                      "phase_deg":  null,
+                                                                      "polarity":  null
+                                                                  }
+                                               },
+                                               {
+                                                   "channel":  2,
+                                                   "output_enabled":  false,
+                                                   "function":  "SIN",
+                                                   "frequency_hz":  1000.0,
+                                                   "amplitude_vpp":  0.5,
+                                                   "offset_v":  0.0,
+                                                   "phase_deg":  0.0,
+                                                   "impedance":  "INFINITY",
+                                                   "modulation":  {
+                                                                      "channel":  2,
+                                                                      "enabled":  false,
+                                                                      "type":  "PSK",
+                                                                      "source":  "INT",
+                                                                      "internal_function":  null,
+                                                                      "rate_hz":  100.0,
+                                                                      "depth_percent":  null,
+                                                                      "deviation":  null,
+                                                                      "amplitude_vpp":  null,
+                                                                      "hop_frequency_hz":  null,
+                                                                      "phase_deg":  180.0,
+                                                                      "polarity":  "POS"
+                                                                  }
+                                               }
+                                           ],
+                              "resource":  "TCPIP0::192.168.2.89::INSTR"
+                          },
+    "instrument_error":  null,
+    "scope_status":  {
+                         "idn":  "RIGOL TECHNOLOGIES,DS4014E,DS4A195200896,00.02.03.SP1",
+                         "system_error":  "0,\"No error\"",
+                         "trigger_status":  "AUTO",
+                         "acquisition_state":  "running",
+                         "timebase_scale_s":  "1.000000e-08",
+                         "channels":  [
+                                          {
+                                              "channel":  1,
+                                              "display":  false,
+                                              "scale_v":  "2.000000e+00",
+                                              "offset_v":  "-4.875000e+00"
+                                          },
+                                          {
+                                              "channel":  2,
+                                              "display":  false,
+                                              "scale_v":  "2.000000e+00",
+                                              "offset_v":  "-6.000000e+00"
+                                          },
+                                          {
+                                              "channel":  3,
+                                              "display":  true,
+                                              "scale_v":  "5.000000e-01",
+                                              "offset_v":  "0.000000e+00"
+                                          },
+                                          {
+                                              "channel":  4,
+                                              "display":  false,
+                                              "scale_v":  "5.000000e+00",
+                                              "offset_v":  "0.000000e+00"
+                                          }
+                                      ],
+                         "resource":  "TCPIP0::192.168.2.90::INSTR"
+                     },
+    "scope_error":  null,
+    "serial_status":  {
+                          "connected":  true,
+                          "settings":  {
+                                           "port":  "COM15",
+                                           "baud_rate":  115200,
+                                           "data_bits":  8,
+                                           "parity":  "None",
+                                           "stop_bits":  "1",
+                                           "flow_control":  "None",
+                                           "dtr_enable":  false,
+                                           "rts_enable":  false,
+                                           "rx_format":  "ASCII"
+                                       },
+                          "available_ports":  [
+                                                  {
+                                                      "device":  "COM1",
+                                                      "description":  "通信端口 (COM1)",
+                                                      "hwid":  "ACPI\\PNP0501\\0"
+                                                  },
+                                                  {
+                                                      "device":  "COM15",
+                                                      "description":  "USB-SERIAL CH340 (COM15)",
+                                                      "hwid":  "USB VID:PID=1A86:7523 SER= LOCATION=1-3.3"
+                                                  },
+                                                  {
+                                                      "device":  "COM3",
+                                                      "description":  "蓝牙链接上的标准串行 (COM3)",
+                                                      "hwid":  "BTHENUM\\{00001101-0000-1000-8000-00805F9B34FB}_LOCALMFG\u00260000\\8\u00262E2E9B64\u00260\u0026000000000000_00000000"
+                                                  },
+                                                  {
+                                                      "device":  "COM4",
+                                                      "description":  "蓝牙链接上的标准串行 (COM4)",
+                                                      "hwid":  "BTHENUM\\{00001101-0000-1000-8000-00805F9B34FB}_VID\u0026000102B0_PID\u00260000\\8\u00262E2E9B64\u00260\u0026203B346A94DF_C00000000"
+                                                  }
+                                              ],
+                          "log_dir":  "D:\\CodexProject\\IQ_AutoCapture_20260505\\serial",
+                          "auto_log_path":  "D:\\CodexProject\\IQ_AutoCapture_20260505\\serial\\serial_auto_log_20260506_021122.log"
+                      },
+    "recent_control_logs":  [
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.242",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query start",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":CHAN4:OFFS?"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.256",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query complete",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":CHAN4:OFFS?",
+                                                    "result":  "0.000000e+00"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.264",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Attempt open resource",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.290",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Resource opened",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.290",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query start",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":TRIG:STAT?"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.420",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query complete",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":TRIG:STAT?",
+                                                    "result":  "AUTO"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.423",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Attempt open resource",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.440",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Resource opened",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.440",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query start",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  "*IDN?"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.447",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query complete",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  "*IDN?",
+                                                    "result":  "RIGOL TECHNOLOGIES,DS4014E,DS4A195200896,00.02.03.SP1"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.452",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Attempt open resource",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.475",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Resource opened",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.475",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query start",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  "SYST:ERR?"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.603",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query complete",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  "SYST:ERR?",
+                                                    "result":  "0,\"No error\""
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.621",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Attempt open resource",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.640",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Resource opened",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.640",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query start",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":TIM:SCAL?"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.653",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_SCPI",
+                                    "message":  "Query complete",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR",
+                                                    "command":  ":TIM:SCAL?",
+                                                    "result":  "1.000000e-08"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.661",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Attempt open resource",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                },
+                                {
+                                    "timestamp":  "2026-05-06 02:13:11.793",
+                                    "level":  "INFO",
+                                    "scope":  "SCOPE_VISA",
+                                    "message":  "Resource opened",
+                                    "details":  {
+                                                    "resource":  "TCPIP0::192.168.2.90::INSTR"
+                                                }
+                                }
+                            ],
+    "recent_serial_logs":  [
+                               {
+                                   "timestamp":  "2026-05-06 02:12:58.998",
+                                   "level":  "INFO",
+                                   "scope":  "SYS",
+                                   "message":  "串口日志已清空",
+                                   "details":  {
+
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:12:59.032",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1472,car=1,ac=47302312,env=47,edge=29,lvl=8,freq=114,psk=8,hist=1,pos=96,neg=3,bias=4618395",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:12:59.242",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "sig,s=0,sc=1,lk=0,cp=0,lo=29000000,est=29000000,k=1/74,v=0,p=0,n=4294967295",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  75
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:12:59.253",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,m=UNKNOWN,ac=0,env=0,edge=0,lvl=0,fq=0,psk=0,hist=0,+=0,-=0,blk=0",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  69
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:00.426",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=64,car=1,ac=47546714,env=81,edge=20,lvl=8,freq=105,psk=5,hist=1,pos=93,neg=6,bias=4507361",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  105
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:00.943",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=128,car=1,ac=47402984,env=81,edge=232,lvl=8,freq=101,psk=6,hist=1,pos=94,neg=5,bias=4250085",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:01.473",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=192,car=1,ac=47444888,env=83,edge=20,lvl=8,freq=104,psk=5,hist=1,pos=93,neg=6,bias=4300866",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:02.006",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=256,car=1,ac=47464773,env=46,edge=5,lvl=8,freq=103,psk=1,hist=1,pos=98,neg=1,bias=4778025",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  105
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:02.524",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=320,car=1,ac=47398311,env=66,edge=165,lvl=8,freq=105,psk=3,hist=1,pos=94,neg=5,bias=4436105",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:03.054",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=384,car=1,ac=47194946,env=45,edge=7,lvl=8,freq=102,psk=1,hist=1,pos=97,neg=2,bias=4602172",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  105
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:03.571",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=448,car=1,ac=47241540,env=68,edge=11,lvl=8,freq=102,psk=4,hist=1,pos=94,neg=5,bias=4270725",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:04.103",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=512,car=1,ac=47076037,env=74,edge=15,lvl=8,freq=103,psk=4,hist=1,pos=94,neg=5,bias=4250297",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:04.636",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=576,car=1,ac=47661821,env=52,edge=7,lvl=8,freq=103,psk=3,hist=1,pos=96,neg=3,bias=4684353",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  105
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:05.153",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=640,car=1,ac=47337673,env=60,edge=9,lvl=8,freq=106,psk=4,hist=1,pos=94,neg=5,bias=4639351",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  105
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:05.685",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=704,car=1,ac=47379889,env=56,edge=13,lvl=8,freq=103,psk=3,hist=1,pos=96,neg=3,bias=4559802",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:06.219",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=768,car=1,ac=47296049,env=60,edge=13,lvl=8,freq=107,psk=6,hist=1,pos=94,neg=5,bias=4437694",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:06.734",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=832,car=1,ac=47290793,env=80,edge=25,lvl=8,freq=107,psk=6,hist=1,pos=93,neg=6,bias=4280203",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:07.264",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=896,car=1,ac=47410306,env=60,edge=210,lvl=8,freq=106,psk=4,hist=1,pos=94,neg=5,bias=4538390",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:07.781",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=960,car=1,ac=47377181,env=77,edge=210,lvl=8,freq=106,psk=8,hist=1,pos=92,neg=7,bias=4274575",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:08.315",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1024,car=1,ac=47365882,env=76,edge=221,lvl=8,freq=105,psk=5,hist=1,pos=92,neg=7,bias=4257641",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  108
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:08.847",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1088,car=1,ac=47389152,env=63,edge=200,lvl=8,freq=104,psk=3,hist=1,pos=95,neg=4,bias=4521698",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  108
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:09.585",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1152,car=1,ac=47425220,env=79,edge=186,lvl=8,freq=103,psk=5,hist=1,pos=92,neg=7,bias=4198227",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  108
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:10.119",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1216,car=1,ac=47737561,env=105,edge=28,lvl=8,freq=102,psk=7,hist=1,pos=87,neg=12,bias=3870676",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  109
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:10.636",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1280,car=1,ac=47290493,env=51,edge=8,lvl=8,freq=104,psk=5,hist=1,pos=96,neg=3,bias=4553166",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  106
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:11.170",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1344,car=1,ac=47381029,env=44,edge=150,lvl=8,freq=103,psk=2,hist=1,pos=96,neg=3,bias=4619633",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  108
+                                               }
+                               },
+                               {
+                                   "timestamp":  "2026-05-06 02:13:11.702",
+                                   "level":  "INFO",
+                                   "scope":  "RX",
+                                   "message":  "mod,mode=FM,blk=1408,car=1,ac=47098301,env=67,edge=15,lvl=8,freq=105,psk=5,hist=1,pos=94,neg=5,bias=4270612",
+                                   "details":  {
+                                                   "format":  "ASCII",
+                                                   "bytes":  107
+                                               }
+                               }
+                           ]
+}

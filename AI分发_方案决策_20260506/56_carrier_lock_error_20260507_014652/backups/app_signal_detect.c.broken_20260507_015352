@@ -1,0 +1,227 @@
+#include "app_signal_detect.h"
+
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "cmsis_os2.h"
+#include "app_dds_ctrl.h"
+#include "RtosTypes.h"
+
+#define APP_SIGDET_MAX_STEPS 512U
+#define APP_SIGDET_INVALID_STEP 0xFFFFU
+
+typedef struct
+{
+  uint32_t metric_vpp;
+  uint32_t i_vpp;
+  uint32_t q_vpp;
+} app_signal_detect_vpp_t;
+
+typedef struct
+{
+  uint8_t carrier_present;
+  uint8_t locked;
+  uint32_t estimated_hz;
+} app_signal_detect_sweep_result_t;
+
+typedef struct
+{
+  app_signal_detect_status_t status;
+  uint32_t vpp_table[APP_SIGDET_MAX_STEPS];
+  uint64_t step_vpp_sum;
+  uint64_t step_i_vpp_sum;
+  uint64_t step_q_vpp_sum;
+  uint32_t coarse_estimate_hz;
+  uint16_t step_dwell_count;
+  uint16_t scan_dwell_blocks;
+  uint32_t scan_start_hz;
+  uint32_t scan_stop_hz;
+  uint32_t scan_step_hz;
+  uint8_t inited;
+} app_signal_detect_ctx_t;
+
+static app_signal_detect_ctx_t g_sigdet;
+
+static uint16_t app_signal_detect_calc_step_count(uint32_t start_hz, uint32_t stop_hz, uint32_t step_hz);
+static uint32_t app_signal_detect_step_freq_hz(uint32_t start_hz, uint32_t step_hz, uint16_t step_index);
+static uint32_t app_signal_detect_clamp_to_valid_hz(uint32_t hz);
+static void app_signal_detect_set_lo(uint32_t lo_hz);
+static app_signal_detect_vpp_t app_signal_detect_block_vpp(const uint16_t *i_buf,
+                                                           const uint16_t *q_buf,
+                                                           uint32_t sample_cnt);
+
+static void app_signal_detect_begin_scan(void);
+static void app_signal_detect_begin_sweep(uint32_t start_hz, uint32_t stop_hz, uint32_t step_hz, uint8_t stage);
+static void app_signal_detect_begin_fine_scan(uint32_t center_hz);
+static void app_signal_detect_finish_step(uint32_t avg_vpp, uint32_t avg_i_vpp, uint32_t avg_q_vpp);
+static app_signal_detect_sweep_result_t app_signal_detect_eval_current_sweep(void);
+static void app_signal_detect_finish_current_sweep(void);
+static void app_signal_detect_finish_locked(uint8_t carrier_present, uint8_t locked, uint32_t estimate_hz)
+{
+  uint32_t raw_hz = app_signal_detect_clamp_to_valid_hz(estimate_hz);
+  uint32_t final_hz = raw_hz;
+  int32_t correction_hz = 0;
+
+  if (final_hz != APP_SIGDET_VALID_STOP_HZ)
+  {
+    uint32_t half_fine_step_hz = APP_SIGDET_FINE_STEP_HZ / 2UL;
+
+    if (final_hz > half_fine_step_hz)
+    {
+      final_hz -= half_fine_step_hz;
+    }
+    else
+    {
+      final_hz = 0UL;
+    }
+    final_hz = app_signal_detect_clamp_to_valid_hz(final_hz);
+  }
+
+  correction_hz = (int32_t)final_hz - (int32_t)raw_hz;
+
+  g_sigdet.status.raw_estimate_hz = raw_hz;
+  g_sigdet.status.demod_lo_hz = final_hz;
+  g_sigdet.status.correction_hz = correction_hz;
+  g_sigdet.status.estimated_carrier_hz = final_hz;
+  g_sigdet.status.current_lo_hz = final_hz;
+  g_sigdet.status.carrier_present = carrier_present;
+  g_sigdet.status.locked = (carrier_present != 0U) ? locked : 0U;
+  g_sigdet.status.scanning = 0U;
+  g_sigdet.status.stage = APP_SIGDET_STAGE_VPP_LOCKED;
+  g_sigdet.status.scan_finish_tick_ms = osKernelGetTickCount();
+
+  app_signal_detect_set_lo(final_hz);
+
+  if (g_uart_mode == UART_MODE_LOG)
+  {
+    char line[125];
+    uint32_t lock_ms = g_sigdet.status.scan_finish_tick_ms - g_sigdet.status.scan_start_tick_ms;
+    int n = snprintf(line,
+                     sizeof(line),
+                     "sigdet_final,final_lo=%lu,est=%lu,raw=%lu,corr=%ld,lk=%u,ms=%lu\r\n",
+                     (unsigned long)g_sigdet.status.current_lo_hz,
+                     (unsigned long)g_sigdet.status.estimated_carrier_hz,
+                     (unsigned long)g_sigdet.status.raw_estimate_hz,
+                     (long)g_sigdet.status.correction_hz,
+                     (unsigned)g_sigdet.status.locked,
+                     (unsigned long)lock_ms);
+    if ((n > 0) && ((size_t)n < sizeof(line)))
+    {
+      print_queue_send_log(line);
+    }
+
+    n = snprintf(line,
+                 sizeof(line),
+                 "sigdet_edge,l=%lu,r=%lu,p=%lu,v=%lu,t=%lu,vi=%u,pi=%u,co=%lu\r\n",
+                 (unsigned long)g_sigdet.status.left_edge_hz,
+                 (unsigned long)g_sigdet.status.right_edge_hz,
+                 (unsigned long)g_sigdet.status.peak_vpp_raw,
+                 (unsigned long)g_sigdet.status.valley_vpp_raw,
+                 (unsigned long)g_sigdet.status.threshold_vpp_raw,
+                 (unsigned)g_sigdet.status.valley_step_index,
+                 (unsigned)g_sigdet.status.peak_step_index,
+                 (unsigned long)g_sigdet.status.coarse_estimate_hz);
+    if ((n > 0) && ((size_t)n < sizeof(line)))
+    {
+      print_queue_send_log(line);
+    }
+  }
+
+#if (APP_SIGDET_VPP_UART_TRACE_ENABLE != 0U)
+  {
+    char line[144];
+
+    (void)snprintf(line,
+                   sizeof(line),
+                   "vpp_done,est=%lu,peak=%lu,valley=%lu,th=%lu,left=%lu,right=%lu\r\n",
+                   (unsigned long)g_sigdet.status.estimated_carrier_hz,
+                   (unsigned long)g_sigdet.status.peak_vpp_raw,
+                   (unsigned long)g_sigdet.status.valley_vpp_raw,
+                   (unsigned long)g_sigdet.status.threshold_vpp_raw,
+                   (unsigned long)g_sigdet.status.left_edge_hz,
+                   (unsigned long)g_sigdet.status.right_edge_hz);
+    app_signal_detect_trace_line(line);
+  }
+#endif
+}
+
+void app_signal_detect_init(void)
+{
+  memset(&g_sigdet, 0, sizeof(g_sigdet));
+  app_signal_detect_begin_scan();
+  g_sigdet.inited = 1U;
+}
+
+void app_signal_detect_request_rescan(void)
+{
+  if (g_sigdet.inited == 0U)
+  {
+    return;
+  }
+
+  app_signal_detect_begin_scan();
+}
+
+/* ADC block processing entry.
+ * Fixed external mapping:
+ *   i_buf = I path samples from PC4 / ADC1_INP4
+ *   q_buf = Q path samples from PB1 / ADC2_INP5
+ */
+void app_signal_detect_process_block(const uint16_t *i_buf, const uint16_t *q_buf, uint32_t sample_cnt)
+{
+  app_signal_detect_vpp_t vpp;
+  uint32_t avg_vpp;
+  uint32_t avg_i_vpp;
+  uint32_t avg_q_vpp;
+
+  if ((g_sigdet.inited == 0U) || (g_sigdet.status.scanning == 0U))
+  {
+    return;
+  }
+
+  vpp = app_signal_detect_block_vpp(i_buf, q_buf, sample_cnt);
+  g_sigdet.step_vpp_sum += vpp.metric_vpp;
+  g_sigdet.step_i_vpp_sum += vpp.i_vpp;
+  g_sigdet.step_q_vpp_sum += vpp.q_vpp;
+  g_sigdet.step_dwell_count++;
+
+  if (g_sigdet.step_dwell_count < g_sigdet.scan_dwell_blocks)
+  {
+    return;
+  }
+
+  avg_vpp = (uint32_t)(g_sigdet.step_vpp_sum / g_sigdet.step_dwell_count);
+  avg_i_vpp = (uint32_t)(g_sigdet.step_i_vpp_sum / g_sigdet.step_dwell_count);
+  avg_q_vpp = (uint32_t)(g_sigdet.step_q_vpp_sum / g_sigdet.step_dwell_count);
+  app_signal_detect_finish_step(avg_vpp, avg_i_vpp, avg_q_vpp);
+
+  g_sigdet.step_vpp_sum = 0ULL;
+  g_sigdet.step_i_vpp_sum = 0ULL;
+  g_sigdet.step_q_vpp_sum = 0ULL;
+  g_sigdet.step_dwell_count = 0U;
+
+  if ((g_sigdet.status.step_index + 1U) < g_sigdet.status.step_count)
+  {
+    g_sigdet.status.step_index++;
+    g_sigdet.status.current_lo_hz = app_signal_detect_step_freq_hz(g_sigdet.scan_start_hz,
+                                                                    g_sigdet.scan_step_hz,
+                                                                    g_sigdet.status.step_index);
+    app_signal_detect_set_lo(g_sigdet.status.current_lo_hz);
+    return;
+  }
+
+  app_signal_detect_finish_current_sweep();
+}
+
+void app_signal_detect_get_status(app_signal_detect_status_t *status_out)
+{
+  if (status_out == 0)
+  {
+    return;
+  }
+
+  *status_out = g_sigdet.status;
+}
+
+

@@ -1,0 +1,47 @@
+# ===== Runtime logs (huge, regenerable) =====
+logs/
+*.log
+
+# ===== Build outputs =====
+build/
+build-*/
+cmake-build-*/
+Debug/
+Release/
+*.elf
+*.hex
+*.bin
+*.map
+*.o
+*.d
+*.axf
+*.crf
+*.lst
+*.lnp
+*.dep
+*.iex
+*.htm
+*.tra
+
+# ===== Keil =====
+*.uvguix.*
+*.bak
+MDK-ARM/*/
+
+# ===== IDE / OS =====
+.vscode/
+.idea/
+*.swp
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# ===== Python =====
+__pycache__/
+*.pyc
+
+# ===== Secrets =====
+.env
+.env.*

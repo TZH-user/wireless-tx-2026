@@ -1,0 +1,181 @@
+﻿# 发给改代码 AI：基带频谱显示接入任务书（2026-05-07）
+
+## 0. 多 AI 执行状态头
+
+```text
+执行角色：改代码 AI
+任务名称：基带频谱显示接入
+任务状态：未开始
+前置任务：23_方案决策AI_载波锁定误差审查与基带频谱放行_20260507.md 已放行
+开始时间：未填写
+完成时间：未完成
+是否允许改代码：是
+是否允许改 ADC/DDS 底层：否
+是否允许改调制识别分类阈值：否
+是否允许改 UI：是
+```
+
+完成后请在文件开头追加：
+
+```text
+执行角色：改代码 AI
+任务名称：基带频谱显示接入
+任务状态：已完成 / 阻塞
+开始时间：YYYY-MM-DD HH:MM
+完成时间：YYYY-MM-DD HH:MM
+修改文件：...
+构建结果：...
+输出目录：...
+是否需要测试采数 AI：是
+```
+
+## 1. 目标
+
+在当前 `Simple_wireless_IQ_demodulation` 工程中引入基带频谱显示功能。
+
+初版目标不是修改调制识别算法，而是在屏幕和日志中显示锁定后 I/Q 基带频谱的摘要信息，用于后续观察 AM/FM/FSK/PSK 特征。
+
+## 2. 工程路径
+
+```text
+D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation
+```
+
+## 3. 前置事实
+
+- RF 输入主线上限：`1.5VPP`
+- DDS 通道：`APP_SIGDET_DDS_CHANNEL = 0U`
+- 当前载波锁定补丁已通过：30/35/40/45/50MHz CW，1.5VPP，25/25 final error = 0Hz
+- 当前固件包含 `raw_estimate_hz / demod_lo_hz / correction_hz / coarse_estimate_hz`
+- 当前 `sigdet_final` 和 `sigdet_edge` 已拆短日志，避免 PrintQueue 截断
+
+## 4. 权限边界
+
+允许：
+
+- 新增 `Core/App/Signal/app_baseband_spectrum.c/.h`
+- 修改 `CMakeLists.txt` 接入新源文件
+- 在 `AdcTask.c` 锁定后调用频谱处理
+- 在 `app_lvgl_ui.c` 显示频谱摘要
+- 增加轻量日志，例如 `bbsp,peak=...,mag=...,noise=...`
+
+禁止：
+
+- 不改 ADC DMA 双缓冲主链路
+- 不改 ADC 分辨率、触发源、采样率
+- 不改 DDS/AD9959 底层驱动
+- 不改 DDS 通道
+- 不改 AM/ASK/FM/FSK/PSK 分类阈值和顺序
+- 不把频谱结果接入主分类判据
+- 不使用 `2.0VPP` 相关数据作为依据
+
+## 5. 推荐实现
+
+### 5.1 模块接口
+
+建议新增：
+
+```c
+void app_baseband_spectrum_init(uint32_t sample_rate_hz);
+void app_baseband_spectrum_process_iq_block(const uint16_t *i_buf, const uint16_t *q_buf, uint32_t sample_cnt);
+void app_baseband_spectrum_get_status(app_baseband_spectrum_status_t *out);
+```
+
+状态字段建议：
+
+```c
+typedef struct
+{
+  uint8_t valid;
+  uint8_t reserved[3];
+  uint32_t block_count;
+  uint32_t sample_rate_hz;
+  uint32_t peak_hz;
+  uint32_t peak_mag;
+  uint32_t noise_floor;
+  uint32_t dc_mag;
+} app_baseband_spectrum_status_t;
+```
+
+### 5.2 初版算法
+
+优先低风险实现：
+
+- 从每个 ADC block 取固定点数，例如 `256` 或 `512`。
+- I/Q 先减均值，避免 DC 峰压制频谱。
+- 初版可先做简化频域能量估计或小点数 FFT。
+- 如果使用 CMSIS-DSP，确认工程已正确链接对应源文件/库。
+- 如果 CMSIS-DSP 接入复杂，第一版允许先做 Goertzel/少数频点能量估计，保证构建通过。
+
+### 5.3 调用位置
+
+在 `AdcTask.c` 中，仅当：
+
+```c
+sig_status.stage == APP_SIGDET_STAGE_VPP_LOCKED &&
+sig_status.locked != 0U &&
+sig_status.carrier_present != 0U
+```
+
+才调用频谱处理。
+
+与 `app_mod_detect_process_iq_block()` 并列，但不得阻塞 ADC 实时路径。
+
+### 5.4 UI 显示
+
+在 `app_lvgl_ui.c` 的频谱预留区域显示：
+
+```text
+Baseband Spectrum
+Peak: xxx Hz
+Mag: xxx
+Noise: xxx
+DC: xxx
+LO: xx.xxx MHz
+```
+
+注意：
+
+- `Peak Hz` 是基带频率，不是 RF 绝对频率。
+- UI 上应保留 `Carrier` 和 `LO` 信息，避免误读。
+
+## 6. 日志要求
+
+每 1s 或低频输出一行：
+
+```text
+bbsp,valid=1,peak=...,mag=...,noise=...,dc=...,blk=...
+```
+
+不得高频刷屏。
+
+## 7. 构建与记录要求
+
+必须执行：
+
+```powershell
+& 'C:\Users/<user>\AppData\Local\stm32cube\bundles\cmake\4.2.3+st.1\bin\cmake.exe' --build 'D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation\build\Debug'
+```
+
+必须更新工程：
+
+```text
+D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation\文件改动记录.md
+D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation\方案改动记录.md
+```
+
+必须输出报告到：
+
+```text
+D:\CodexProject\2026年校电赛\AI分发_方案决策_20260506\57_baseband_spectrum_impl_YYYYMMDD_HHMMSS
+```
+
+## 8. 验收标准
+
+- Debug 构建通过。
+- 不改 ADC/DDS 底层。
+- 不改调制分类阈值。
+- UI 能显示基带频谱摘要。
+- 串口能看到低频 `bbsp` 日志。
+- 原有 `sigdet_final`、`sigdet_edge`、调制识别日志仍存在。
+- 若频谱模块未获得有效数据，必须显示 `valid=0`，不能显示旧值。

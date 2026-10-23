@@ -1,0 +1,263 @@
+﻿{
+    "entries":  [
+                    {
+                        "timestamp":  "2026-05-06 04:13:06.548",
+                        "level":  "INFO",
+                        "scope":  "SYS",
+                        "message":  "串口日志已清空",
+                        "details":  {
+
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:06.726",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=2432,car=1,ac=46899064,env=98,edge=61,lvl=8,freq=97,psk=15,hist=1,pos=7,neg=92,bias=-3921157",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  108
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:07.139",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  76
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:07.153",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "sig,s=0,sc=1,lk=0,cp=0,lo=29000000,est=29000000,k=1/74,v=0,p=0,n=4294967295",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  75
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:07.165",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,m=UNKNOWN,ac=0,env=0,edge=0,lvl=0,fq=0,psk=0,hist=0,+=0,-=0,blk=0",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  69
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:07.673",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  76
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:07.870",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "sigdet_final,final_lo=40025000,estimated_carrier=40025000,peak=16383,valley=3837,threshold=6973,left_edge=39250000,right_edge",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  125
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:08.220",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  76
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:08.356",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=64,car=1,ac=46955640,env=101,edge=61,lvl=8,freq=99,psk=13,hist=1,pos=7,neg=92,bias=-3807722",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  107
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:08.781",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  76
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:08.906",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=128,car=1,ac=46846822,env=84,edge=76,lvl=8,freq=100,psk=15,hist=1,pos=3,neg=96,bias=-4084976",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  108
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:09.431",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=192,car=1,ac=46760963,env=113,edge=90,lvl=8,freq=104,psk=18,hist=1,pos=8,neg=91,bias=-3705842",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:09.970",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=256,car=1,ac=46873692,env=91,edge=69,lvl=8,freq=98,psk=14,hist=1,pos=5,neg=94,bias=-3963907",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  107
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:10.511",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=320,car=1,ac=46898675,env=87,edge=66,lvl=8,freq=99,psk=16,hist=1,pos=5,neg=94,bias=-3922997",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  107
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:11.037",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=384,car=1,ac=46917780,env=143,edge=83,lvl=8,freq=105,psk=17,hist=2,pos=12,neg=87,bias=-3204925",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  110
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:11.578",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=448,car=1,ac=46846863,env=116,edge=70,lvl=8,freq=100,psk=16,hist=1,pos=8,neg=91,bias=-3632115",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:12.119",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=512,car=1,ac=46692665,env=130,edge=64,lvl=8,freq=101,psk=16,hist=1,pos=11,neg=88,bias=-3572112",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  110
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:12.647",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=576,car=1,ac=46256736,env=122,edge=59,lvl=8,freq=104,psk=16,hist=1,pos=8,neg=91,bias=-3651041",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:13.186",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=640,car=1,ac=46849304,env=146,edge=90,lvl=8,freq=103,psk=20,hist=2,pos=12,neg=87,bias=-3317519",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  110
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:13.730",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=704,car=1,ac=46878362,env=105,edge=75,lvl=8,freq=104,psk=17,hist=1,pos=8,neg=91,bias=-3682435",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:14.254",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=768,car=1,ac=47098663,env=94,edge=62,lvl=8,freq=96,psk=15,hist=1,pos=6,neg=93,bias=-3844091",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  107
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:14.795",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=832,car=1,ac=46888481,env=120,edge=87,lvl=8,freq=101,psk=16,hist=1,pos=9,neg=90,bias=-3586397",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:15.336",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=896,car=1,ac=46854084,env=121,edge=77,lvl=8,freq=106,psk=17,hist=1,pos=10,neg=89,bias=-3432206",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  110
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:15.878",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=960,car=1,ac=46388525,env=122,edge=66,lvl=8,freq=101,psk=19,hist=1,pos=9,neg=90,bias=-3572398",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  109
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:16.404",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=1024,car=1,ac=46901278,env=126,edge=94,lvl=8,freq=105,psk=16,hist=1,pos=10,neg=89,bias=-3534477",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  111
+                                    }
+                    },
+                    {
+                        "timestamp":  "2026-05-06 04:13:16.944",
+                        "level":  "INFO",
+                        "scope":  "RX",
+                        "message":  "mod,mode=FM,blk=1088,car=1,ac=46812546,env=118,edge=77,lvl=8,freq=102,psk=16,hist=1,pos=8,neg=91,bias=-3665982",
+                        "details":  {
+                                        "format":  "ASCII",
+                                        "bytes":  110
+                                    }
+                    }
+                ]
+}

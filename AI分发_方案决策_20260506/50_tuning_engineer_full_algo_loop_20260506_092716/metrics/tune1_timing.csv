@@ -1,0 +1,7 @@
+﻿"case","fw_to_sig_s","sig_to_first_mod_s","fw_to_first_mod_s","first_mode","majority"
+"CW_40M","0.735","0.475","1.21","CW","CW"
+"AM_40M_10k_50pct","0.795","0.416","1.211","AM","AM"
+"FM_40M_10k_dev75k","0.788","0.43","1.218","FM","FM"
+"ASK_40M_10k_low0","0.787","0.427","1.214","ASK","ASK"
+"FSK_40M_10k_hop20k","0.79","-0.858","-0.068","FSK","FSK"
+"PSK_40M_10k_180","0.791","0.43","1.221","PSK","PSK"

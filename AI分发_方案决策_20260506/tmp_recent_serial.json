@@ -1,0 +1,402 @@
+﻿[
+    {
+        "timestamp":  "2026-05-07 00:17:37.565",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=ASK,stable=AM,conf=52,rate=2604,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  65
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:37.572",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=ASK,conf=52,rate=2604,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:38.200",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:38.211",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:38.842",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=52,rate=312,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:38.853",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=52,rate=312,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:39.483",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:39.494",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:40.153",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=52,rate=2812,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:40.162",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=52,rate=2812,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:40.792",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=52,rate=625,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:40.801",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=52,rate=625,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:41.433",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=ASK,stable=ASK,conf=50,rate=3125,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  66
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:41.443",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=ASK,inst=ASK,conf=50,rate=3125,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:42.076",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=53,rate=1875,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:42.085",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=53,rate=1875,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:42.717",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=ASK,stable=AM,conf=51,rate=1302,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  65
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:42.727",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=ASK,conf=51,rate=1302,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:43.358",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=ASK,stable=ASK,conf=50,rate=1823,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  66
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:43.367",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=ASK,inst=ASK,conf=50,rate=1823,depth=1000,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:44.024",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=53,rate=0,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:44.030",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=53,rate=0,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  57
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:44.666",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=50,rate=2500,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:44.672",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=50,rate=2500,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:45.302",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=51,rate=0,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:45.313",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=51,rate=0,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  57
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:45.942",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=53,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:45.953",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=53,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:46.588",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=54,rate=3438,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:46.594",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=54,rate=3438,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:47.223",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=54,rate=312,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:47.234",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=54,rate=312,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:47.865",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=55,rate=1875,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:47.900",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=55,rate=1875,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:48.532",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=50,rate=2500,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  63
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:48.538",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=50,rate=2500,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  60
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:49.169",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=51,rate=625,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:49.180",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=51,rate=625,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:49.813",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "mod,mode=AM,stable=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  62
+                    }
+    },
+    {
+        "timestamp":  "2026-05-07 00:17:49.823",
+        "level":  "INFO",
+        "scope":  "RX",
+        "message":  "ui,mode=AM,inst=AM,conf=50,rate=938,depth=700,dev=0,shift=0",
+        "details":  {
+                        "format":  "ASCII",
+                        "bytes":  59
+                    }
+    }
+]

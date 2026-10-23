@@ -1,0 +1,29 @@
+﻿# 代码改动 AI 执行结果（2026-05-06）
+
+## 本轮执行范围
+- 仅执行版本一致性确认所需的最小代码改动
+- 未修改 ASK/PSK 判据
+- 未修改任何调制识别阈值
+
+## 修改文件
+- `D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation\Core\App\Tasks\AdcTask.c`
+
+## 备份文件
+- `D:\VSCodeCMAKEProject\Simple_wireless_IQ_demodulation\Core\App\Tasks\AdcTask.c.bak_20260506_fw_id`
+
+## 实际固件标识
+- `fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only`
+
+## 代码结论
+1. `fw_id` 已在 `StartAdcTask()` 初始化完成后输出一次，且不依赖扫频锁定状态。
+2. `sigdet_final` 现有实现位于 `app_signal_detect_finish_locked()`，输出链路为 `print_queue_send_log()`。
+3. `sigdet_final` 不受 `APP_SIGDET_VPP_UART_TRACE_ENABLE` 宏控制，只有 `g_uart_mode == UART_MODE_LOG` 会影响其是否发送。
+
+## 编译结果
+- `Debug` 构建通过
+
+## 交接给测试数据 AI
+1. 烧录当前 `Debug` 固件。
+2. 上电后先确认串口出现 `fw_id,moddet_review2_20260506,build=20260506_0308,ask=edge_freq,psk=pos_only`。
+3. 采集最小验证集时，至少保留一段能触发扫频完成的原始日志，确认是否出现 `sigdet_final`。
+

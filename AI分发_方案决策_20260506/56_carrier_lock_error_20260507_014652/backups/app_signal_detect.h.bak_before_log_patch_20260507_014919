@@ -1,0 +1,116 @@
+#ifndef APP_SIGNAL_DETECT_H
+#define APP_SIGNAL_DETECT_H
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+ * Detection scan profile:
+ *   0: lab profile, valid carrier 30~50 MHz, LO sweep 29~51 MHz
+ *   1: contest profile, valid carrier 110~130 MHz, LO sweep 109~131 MHz
+ */
+#ifndef APP_SIGDET_SCAN_PROFILE
+#define APP_SIGDET_SCAN_PROFILE               0U
+#endif
+
+#ifndef APP_SIGDET_DDS_CHANNEL
+#define APP_SIGDET_DDS_CHANNEL                0U
+#endif
+
+#if !defined(APP_SIGDET_VALID_START_HZ) || !defined(APP_SIGDET_VALID_STOP_HZ) || \
+    !defined(APP_SIGDET_SCAN_START_HZ) || !defined(APP_SIGDET_SCAN_STOP_HZ)
+#if (APP_SIGDET_SCAN_PROFILE == 0U)
+#define APP_SIGDET_VALID_START_HZ             30000000UL
+#define APP_SIGDET_VALID_STOP_HZ              50000000UL
+#define APP_SIGDET_SCAN_START_HZ              29000000UL
+#define APP_SIGDET_SCAN_STOP_HZ               51000000UL
+#elif (APP_SIGDET_SCAN_PROFILE == 1U)
+#define APP_SIGDET_VALID_START_HZ             110000000UL
+#define APP_SIGDET_VALID_STOP_HZ              130000000UL
+#define APP_SIGDET_SCAN_START_HZ              109000000UL
+#define APP_SIGDET_SCAN_STOP_HZ               131000000UL
+#else
+#error "Unsupported APP_SIGDET_SCAN_PROFILE"
+#endif
+#endif
+
+/* Coarse Vpp sweep parameters. Each point uses half-DMA ADC blocks. */
+#ifndef APP_SIGDET_SCAN_STEP_HZ
+#define APP_SIGDET_SCAN_STEP_HZ               300000UL
+#endif
+
+/* Fine sweep around coarse estimate: [coarse - span, coarse + span]. */
+#ifndef APP_SIGDET_FINE_SPAN_HZ
+#define APP_SIGDET_FINE_SPAN_HZ               1200000UL
+#endif
+
+#ifndef APP_SIGDET_FINE_STEP_HZ
+#define APP_SIGDET_FINE_STEP_HZ               50000UL
+#endif
+
+#ifndef APP_SIGDET_DWELL_BLOCKS_PER_STEP
+#define APP_SIGDET_DWELL_BLOCKS_PER_STEP      2U
+#endif
+
+/* Minimum raw-ADC Vpp rise required to treat a sweep response as valid. */
+#ifndef APP_SIGDET_VPP_MIN_RISE_RAW
+#define APP_SIGDET_VPP_MIN_RISE_RAW           80UL
+#endif
+
+/* Active threshold = valley + max((peak - valley) / 4, APP_SIGDET_VPP_MIN_RISE_RAW). */
+#ifndef APP_SIGDET_VPP_THRESHOLD_SHIFT
+#define APP_SIGDET_VPP_THRESHOLD_SHIFT        2U
+#endif
+
+/* Temporary serial trace for plotting Vpp response:
+ * vpp_stage,coarse|fine
+ * vpp_begin,start_hz,stop_hz,step_hz,dwell_blocks
+ * vpp,lo_hz,total_vpp,i_vpp,q_vpp
+ */
+#ifndef APP_SIGDET_VPP_UART_TRACE_ENABLE
+#define APP_SIGDET_VPP_UART_TRACE_ENABLE      0U
+#endif
+
+#define APP_SIGDET_STAGE_VPP_COARSE_SCAN      0U
+#define APP_SIGDET_STAGE_VPP_FINE_SCAN        1U
+#define APP_SIGDET_STAGE_VPP_LOCKED           2U
+#define APP_SIGDET_STAGE_VPP_SCAN             APP_SIGDET_STAGE_VPP_COARSE_SCAN
+
+typedef struct
+{
+  uint8_t scanning;                /* 来历: app_signal_detect_start_scan()/finish_locked()；算法: 扫频中为 1，锁定/结束后为 0；作用: UI 显示搜索状态。 */
+  uint8_t carrier_present;         /* 来历: 扫频 Vpp 曲线是否存在有效凹谷/响应；算法: 峰谷差和有效边沿满足门限置 1；作用: 判断是否检测到载波。 */
+  uint8_t stage;                   /* 来历: 当前扫频阶段；算法: 0 粗扫、1 细扫、2 锁定；作用: 控制调制识别何时启动和 UI 阶段显示。 */
+  uint8_t locked;                  /* 来历: app_signal_detect_finish_locked()；算法: carrier_present 且扫频结果可信时置 1；作用: 允许后续 IQ 调制识别。 */
+  uint32_t current_lo_hz;          /* 来历: 当前 DDS/LO 设置频点；算法: 扫频时按 step 递增，锁定后写入 final_hz；作用: UI 显示当前本振。 */
+  uint32_t estimated_carrier_hz;   /* 来历: Vpp 曲线左右边沿中点或谷点估计；算法: edge midpoint，锁定后经有效范围和半步修正；作用: UI 显示载波频率。 */
+  uint32_t current_vpp_raw;        /* 来历: 当前频点 I/Q 总峰峰值；算法: 当前 dwell 内 I/Q Vpp 平均/合成；作用: 扫频曲线和健康诊断。 */
+  uint32_t current_i_vpp_raw;      /* 来历: 当前频点 I 路峰峰值；算法: ADC I 路块内 max-min；作用: 排查 I 路硬件和混频响应。 */
+  uint32_t current_q_vpp_raw;      /* 来历: 当前频点 Q 路峰峰值；算法: ADC Q 路块内 max-min；作用: 排查 Q 路硬件和混频响应。 */
+  uint32_t peak_vpp_raw;           /* 来历: 一次扫频中最大的 current_vpp_raw；算法: 逐点比较更新；作用: 计算有效响应阈值。 */
+  uint32_t valley_vpp_raw;         /* 来历: 一次扫频中最小的 current_vpp_raw；算法: 逐点比较更新；作用: 找载波附近低点。 */
+  uint32_t threshold_vpp_raw;      /* 来历: peak/valley 差值；算法: valley + max((peak-valley)/4, min_rise)；作用: 找左右有效边沿。 */
+  uint32_t left_edge_hz;           /* 来历: Vpp 曲线左侧首次超过 threshold 的频点；算法: 从谷点向左搜索；作用: 与右边沿求中点估计载波。 */
+  uint32_t right_edge_hz;          /* 来历: Vpp 曲线右侧首次超过 threshold 的频点；算法: 从谷点向右搜索；作用: 与左边沿求中点估计载波。 */
+  uint32_t scan_start_tick_ms;     /* 来历: 扫频开始时 RTOS tick；算法: osKernelGetTickCount()；作用: 统计扫频耗时。 */
+  uint32_t scan_finish_tick_ms;    /* 来历: 扫频结束/锁定时 RTOS tick；算法: osKernelGetTickCount()；作用: 统计搜索完成时间。 */
+  uint16_t step_index;             /* 来历: 当前扫频点索引；算法: 每完成一个频点加一；作用: 日志显示扫描进度。 */
+  uint16_t step_count;             /* 来历: 起止频率和步进计算；算法: (stop-start)/step+1；作用: UI/日志显示总扫频点数。 */
+  uint16_t valley_step_index;      /* 来历: valley_vpp_raw 所在扫频点；算法: 发现更小 Vpp 时记录 idx；作用: 谷点定位和异常判断。 */
+  uint16_t peak_step_index;        /* 来历: peak_vpp_raw 所在扫频点；算法: 发现更大 Vpp 时记录 idx；作用: 响应强度诊断。 */
+} app_signal_detect_status_t;
+
+void app_signal_detect_init(void);
+void app_signal_detect_request_rescan(void);
+void app_signal_detect_process_block(const uint16_t *i_buf, const uint16_t *q_buf, uint32_t sample_cnt);
+void app_signal_detect_get_status(app_signal_detect_status_t *status_out);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* APP_SIGNAL_DETECT_H */
+

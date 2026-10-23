@@ -1,0 +1,5 @@
+﻿"case_id","rf_vpp","scope_vmax","scope_vmin","scope_vpp","scope_vavg","adc_imin","adc_imax","adc_ivpp","adc_qmin","adc_qmax","adc_qvpp","adc_iclo","adc_ichi","adc_qclo","adc_qchi","fw","sig","adc_lines","over_v"
+"CW_40M_v0p5VPP","0.5","0","0","0","0","8059","8225","166","7769","8326","557","0","0","0","0","True","True","1","False"
+"CW_40M_v1VPP","1","0","0","0","0","8069","8210","141","7817","8295","478","0","0","0","0","True","True","1","False"
+"CW_40M_v1p5VPP","1.5","0","0","0","0","8055","8198","143","7814","8283","469","0","0","0","0","True","True","1","False"
+"CW_40M_v2VPP","2","0","0","0","0","8059","8231","172","7835","8265","430","0","0","0","0","True","True","1","False"

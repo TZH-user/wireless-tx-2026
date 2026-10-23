@@ -1,0 +1,6 @@
+﻿"case_id","rf_mhz","current_error_hz","no_correction_error_hz","valley_error_hz","edge_mid_error_hz","fit_or_avg_error_hz","recommended_strategy"
+"A1","30","0","5000","1220000","5000","NA_no_vpp_table","current_halfstep"
+"A2","35","0","20000","1250000","20000","NA_no_vpp_table","current_halfstep"
+"A3","40","0","25000","1140000","25000","NA_no_vpp_table","current_halfstep"
+"A4","45","0","10000","1250000","10000","NA_no_vpp_table","current_halfstep"
+"A5","50","0","0","-1130000","20000","NA_no_vpp_table","current_halfstep"
